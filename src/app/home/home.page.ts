@@ -24,7 +24,7 @@ export class HomePage implements OnInit {
 
   ngOnInit() {
     // Get slides from HTML
-    this.slides = document.querySelector('#mySlides');
+    this.slides = document.querySelector('#mySlides') as unknown as IonSlides;
   }
 
   async showVarillaModal() {
