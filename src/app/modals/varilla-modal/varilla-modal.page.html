@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar class="horizontal-toolbar">
+    <ion-searchbar [(ngModel)]="searchText" (ionChange)="searchChanged()" type="text" placeholder="Varilla"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let varilla of filteredVarillas; index as i" button (click)="clickVarilla(i)">
+      <ion-label>{{varilla}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="close()">Cerrar</ion-button>
+</ion-content>

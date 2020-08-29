@@ -11,6 +11,10 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'varilla-modal',
+    loadChildren: () => import('./modals/varilla-modal/varilla-modal.module').then( m => m.VarillaModalPageModule)
+  },
 ];
 
 @NgModule({
