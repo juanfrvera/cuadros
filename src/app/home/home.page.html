@@ -1,24 +1,45 @@
 <ion-header [translucent]="true">
-
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-chip (click)="showVarillaModal()">
-    <ion-label>{{currentVarilla}}</ion-label>
-  </ion-chip>
-  <p>Paspartú</p>
-  <ion-slides id="mySlides" (ionSlideDidChange)="slideChanged()">
-    <ion-slide *ngFor="let varilla of varillas">
-      {{varilla}}
-    </ion-slide>
-  </ion-slides>
-  <div class="frame">
-    Marco
-    <div class="photo">
-      Foto
-    </div>
+  <div class="segment-container">
+    <ion-button (click)="showVarillaModal()">
+      <ion-icon name="search"></ion-icon>
+    </ion-button>
+    <ion-segment id="segment" (ionChange)="segmentChanged($event)">
+      <ion-segment-button value="varilla">
+        <ion-label>{{currentVarilla.name}}</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="paspartu">
+        <ion-label>Paspartú</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-button (click)="showPaspartuModal()">
+      <ion-icon name="color-palette"></ion-icon>
+    </ion-button>
   </div>
 
-  <p>Muestra 1</p>
-  <p>Muestra 2</p>
+  <div class="cuadro">
+    <!--Fixed-->
+    <div class="varilla fixed"
+      style="border-color: {{ slideMode != 'varilla' ? currentVarilla.color : 'transparent'}};">
+      <div *ngIf="slideMode == 'varilla'" class="paspartu" style="border-color:{{currentPaspartu}}"></div>
+      <!--Paspartu slider-->
+      <ion-slides [hidden]="slideMode == 'varilla'" id="paspartuSlides" (ionSlideDidChange)="paspartuSlideChanged()">
+        <ion-slide *ngFor="let paspartu of paspartus">
+          <div class="paspartu" style="border-color: {{paspartu}};"></div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <!--Varillas slider-->
+    <ion-slides [hidden]="slideMode == 'paspartu'" id="varillaSlides" (ionSlideDidChange)="varillaSlideChanged()">
+      <ion-slide *ngFor="let varilla of varillas">
+        <div class="varilla" style="border-color: {{varilla.color}};"></div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+  <div class="inside">
+    <p>Muestra 1</p>
+    <p>Muestra 2</p>
+  </div>
 </ion-content>

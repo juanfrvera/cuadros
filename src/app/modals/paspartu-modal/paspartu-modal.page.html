@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar class="horizontal-toolbar">
+    <ion-searchbar [(ngModel)]="searchText" (ionChange)="searchChanged()" type="text" placeholder="Paspartu"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let paspartu of filteredList; index as i" button (click)="clickPaspartu(i)">
+      <ion-label>{{paspartu}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-button (click)="close()">Cerrar</ion-button>
+</ion-content>

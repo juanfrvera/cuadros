@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'varilla-modal',
     loadChildren: () => import('./modals/varilla-modal/varilla-modal.module').then( m => m.VarillaModalPageModule)
   },
+  {
+    path: 'paspartu-modal',
+    loadChildren: () => import('./modals/paspartu-modal/paspartu-modal.module').then( m => m.PaspartuModalPageModule)
+  },
 ];
 
 @NgModule({

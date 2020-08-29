@@ -8,20 +8,30 @@ import { ModalController } from '@ionic/angular';
 })
 export class VarillaModalPage implements OnInit {
   searchText: string = "";
-  varillas = ['varilla1', 'varilla2', 'varilla3', 'varilla4', 'varilla5', 'varilla6', 'varilla7', 'varilla8', 'varilla9', 'varilla10']
-  filteredVarillas: string[];
+  list: Varilla[] = [
+    { name: 'varilla1', color: '#fg2' },
+    { name: 'varilla2', color: '#bca' },
+    { name: 'varilla3', color: '#345' },
+    { name: 'varilla4', color: '#6fc' },
+    { name: 'varilla5', color: '#fc2' },
+    { name: 'varilla6', color: '#b07' },
+    { name: 'varilla7', color: '#fa9' },
+    { name: 'varilla8', color: '#bf5' },
+    { name: 'varilla9', color: '#cc8' },
+    { name: 'varilla10', color: '#38f' }
+  ];
+  filteredList: string[];
 
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
-    this.filteredVarillas = this.varillas;
+    this.filteredList = this.list;
   }
 
   clickVarilla(index: number) {
-    console.log('Index clicked: ' + index);
     // Close this modal and pass the selected varilla
     this.modalCtrl.dismiss({
-      'varillaIndex': index
+      'index': index
     });
   }
 
@@ -32,15 +42,15 @@ export class VarillaModalPage implements OnInit {
 
   filterItems(searchTerm: string, items: any[]) {
     return items.filter(item => {
-      return item.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+      return item.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
     });
   }
 
   filterVarillas(searchTerm: string) {
-    return this.filterItems(searchTerm, this.varillas);
+    return this.filterItems(searchTerm, this.list);
   }
 
   searchChanged() {
-    this.filteredVarillas = this.filterVarillas(this.searchText);
+    this.filteredList = this.filterVarillas(this.searchText);
   }
 }
