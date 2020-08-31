@@ -113,6 +113,7 @@ export class HomePage implements OnInit {
     }
   }
   paspartuSelected(index: number) {
+    console.log(index + ' selected');
     if (this.slideMode == 'paspartu') {
       // Slide with animation
       this.paspartuSlides.slideTo(index);

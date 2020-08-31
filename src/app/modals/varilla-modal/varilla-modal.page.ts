@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Varilla } from '../../typings/varilla';
 
 @Component({
   selector: 'app-varilla-modal',
@@ -20,7 +21,7 @@ export class VarillaModalPage implements OnInit {
     { name: 'varilla9', color: '#cc8' },
     { name: 'varilla10', color: '#38f' }
   ];
-  filteredList: string[];
+  filteredList: Varilla[];
 
   constructor(private modalCtrl: ModalController) { }
 

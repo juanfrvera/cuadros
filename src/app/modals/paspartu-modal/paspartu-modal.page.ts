@@ -18,6 +18,7 @@ export class PaspartuModalPage implements OnInit {
   }
 
   clickPaspartu(index: number) {
+    console.log(index + " clicked");
     // Close this modal and pass the selected index
     this.modalCtrl.dismiss({
       'index': index

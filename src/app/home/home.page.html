@@ -19,9 +19,10 @@
   </div>
 
   <div class="cuadro">
-    <!--Fixed-->
+    <!--Varilla Fixed-->
     <div class="varilla fixed"
       style="border-color: {{ slideMode != 'varilla' ? currentVarilla.color : 'transparent'}};">
+      <!--Paspartu fixed-->
       <div *ngIf="slideMode == 'varilla'" class="paspartu" style="border-color:{{currentPaspartu}}"></div>
       <!--Paspartu slider-->
       <ion-slides [hidden]="slideMode == 'varilla'" id="paspartuSlides" (ionSlideDidChange)="paspartuSlideChanged()">
