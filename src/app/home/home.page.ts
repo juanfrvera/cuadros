@@ -36,6 +36,12 @@ export class HomePage implements OnInit {
 
   private varillaSlides: IonSlides;
   private paspartuSlides: IonSlides;
+  private imageSlides: IonSlides;
+
+  imageSlidesOptions = {
+    direction: 'vertical',
+    loop:true
+  };
 
   get currentVarilla(): Varilla {
     return this.varillas[this.varillaIndex];
@@ -51,6 +57,7 @@ export class HomePage implements OnInit {
     this.segment = document.querySelector("#segment") as unknown as IonSegment;
     this.varillaSlides = document.querySelector('#varillaSlides') as unknown as IonSlides;
     this.paspartuSlides = document.querySelector('#paspartuSlides') as unknown as IonSlides;
+    this.imageSlides = document.querySelectorAll('#imageSlides') as unknown as IonSlides;
   }
 
   segmentChanged(ev: any) {
@@ -77,6 +84,8 @@ export class HomePage implements OnInit {
   }
 
   async showVarillaModal() {
+    this.slideMode = 'varilla';
+
     const modal = await this.modalController.create({
       component: VarillaModalPage,
       cssClass: 'my-custom-class'
@@ -90,6 +99,8 @@ export class HomePage implements OnInit {
   }
 
   async showPaspartuModal() {
+    this.slideMode = 'paspartu';
+
     const modal = await this.modalController.create({
       component: PaspartuModalPage,
       cssClass: 'my-custom-class'
